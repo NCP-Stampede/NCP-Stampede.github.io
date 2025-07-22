@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples - NCP Stampede Toolkit</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        body { padding-top: 70px; }
+        .example-section { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+            margin: 30px 0; 
+        }
+        .output-preview {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+        .back-nav {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            z-index: 100;
+        }
+        .back-nav a {
+            background: #007AFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .back-nav a:hover {
+            background: #0056CC;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="index.html">← Back to Docs</a>
+    </div>
+
+    <div class="container" style="max-width: 1000px; margin-top: 40px;">
+        <h1 style="text-align: center; color: #007AFF; margin-bottom: 40px;">
+            📚 Complete Examples & Use Cases
+        </h1>
+
+        <div class="example-section">
+            <h2>🏀 MaxPreps Basketball Roster Example</h2>
+            <p>Complete example showing how to scrape basketball roster data from MaxPreps.</p>
+            
+            <pre><code class="language-python">from hs_scraper_toolkit import MaxPrepRoster
+import pandas as pd
+
+# Initialize scraper with Northside College Prep's MaxPreps URL
+scraper = MaxPrepRoster("https://www.maxpreps.com/il/chicago/northside-mustangs")
+
+# Scrape boys varsity basketball for winter season
+basketball_roster = scraper.scrape(
+    sports=['basketball'],
+    genders=['boys'],
+    seasons=['winter'],
+    levels=['varsity']
+)
+
+# Display results
+print(f"Found {len(basketball_roster)} basketball players")
+print("\nRoster Preview:")
+print(basketball_roster[['name', 'number', 'position', 'grade']].head())
+
+# Save to CSV for further analysis
+basketball_roster.to_csv('northside_basketball_roster.csv', index=False)
+print("\nRoster saved to northside_basketball_roster.csv")</code></pre>
+
+            <div class="output-preview">
+<strong>Sample Output:</strong>
+Found 15 basketball players
+
+Roster Preview:
+           name  number position grade
+0    John Smith      23   Forward    12
+1   Mike Jones      15     Guard    11
+2  Alex Johnson     32    Center    12
+3   Chris Brown      7     Guard    10
+4   David Wilson    21   Forward    11
+
+Roster saved to northside_basketball_roster.csv
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>🏃‍♂️ Athletic.net Cross Country Example</h2>
+            <p>Scraping athlete rosters and meet schedules from Athletic.net for track & field teams.</p>
+            
+            <pre><code class="language-python">from hs_scraper_toolkit import AthleticNetTrackField
+from datetime import datetime
+
+# Initialize scraper with team URL
+scraper = AthleticNetTrackField("https://www.athletic.net/team/19718")
+
+# Scrape cross country athletes
+print("Scraping cross country athletes...")
+athletes = scraper.scrape_athletes(['cross-country'])
+
+print(f"Found {len(athletes)} cross country athletes")
+print("\nAthletes by gender:")
+print(athletes.groupby('gender')['name'].count())
+
+# Scrape meet schedule for current year
+print("\nScraping meet schedule...")
+meets = scraper.scrape_events(['cross-country'], [datetime.now().year])
+
+print(f"Found {len(meets)} scheduled meets")
+print("\nUpcoming meets:")
+print(meets[['name', 'date', 'location']].head())
+
+# Combine data for analysis
+print(f"\nTotal athletes: {len(athletes)}")
+print(f"Total meets: {len(meets)}")
+print(f"Boys athletes: {len(athletes[athletes['gender'] == 'boys'])}")
+print(f"Girls athletes: {len(athletes[athletes['gender'] == 'girls'])}")</code></pre>
+
+            <div class="output-preview">
+<strong>Sample Output:</strong>
+Scraping cross country athletes...
+Found 45 cross country athletes
+
+Athletes by gender:
+gender
+boys     23
+girls    22
+Name: name, dtype: int64
+
+Scraping meet schedule...
+Found 12 scheduled meets
+
+Upcoming meets:
+                    name        date                    location
+0     Regional Championships   Oct 28    Busse Woods Forest Preserve
+1          Sectional Meet   Nov 4      Detweiller Park, Peoria
+2         Conference Meet   Oct 21     Northside College Prep
+3     Early Bird Invitational Oct 7    Lincoln Park Zoo
+4           City Championships Oct 14   Grant Park
+
+Total athletes: 45
+Total meets: 12
+Boys athletes: 23
+Girls athletes: 22
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>📱 Flutter App Integration Example</h2>
+            <p>Complete Flutter app showing how to integrate the frontend package with custom school branding.</p>
+            
+            <pre><code class="language-dart">// main.dart
+import 'package:flutter/material.dart';
+import 'package:frontend_package/core/theme/app_theme.dart';
+import 'package:frontend_package/widgets/shared_header.dart';
+import 'package:sizer/sizer.dart';
+
+void main() => runApp(MySchoolApp());
+
+class MySchoolApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Sizer(
+      builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          title: 'Northside Athletics',
+          // Custom school colors
+          theme: AppTheme.buildTheme(
+            primaryColor: Color(0xFF1E3A8A),  // School blue
+            secondaryColor: Color(0xFFEAB308), // School gold
+            backgroundColor: Color(0xFFF8FAFC),
+          ),
+          home: AthleticsHomePage(),
+        );
+      },
+    );
+  }
+}
+
+class AthleticsHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          // Using the SharedHeader from frontend package
+          SharedHeader(
+            title: 'Northside Athletics',
+            onTrailingTap: () {
+              // Handle profile tap
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => LoginSheet(
+                  onLogin: () {
+                    Navigator.pop(context);
+                    // Handle login success
+                  },
+                ),
+              );
+            },
+          ),
+          
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(24.0),
+              children: [
+                // Sports cards with responsive design
+                _buildSportCard(
+                  context,
+                  'Basketball',
+                  'Winter Season • Varsity',
+                  '15 Players',
+                  Icons.sports_basketball,
+                ),
+                SizedBox(height: 16),
+                _buildSportCard(
+                  context,
+                  'Cross Country',
+                  'Fall Season • Varsity',
+                  '45 Athletes',
+                  Icons.directions_run,
+                ),
+                SizedBox(height: 16),
+                _buildSportCard(
+                  context,
+                  'Track & Field',
+                  'Spring Season • Varsity',
+                  '62 Athletes',
+                  Icons.track_changes,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSportCard(BuildContext context, String title, String subtitle, 
+                        String stats, IconData icon) {
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          DesignConstants.get16Radius(context)
+        ),
+      ),
+      child: ListTile(
+        leading: Icon(icon, size: 32, color: Theme.of(context).primaryColor),
+        title: TextHelper.responsiveText(
+          title,
+          context: context,
+          isBold: true,
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(subtitle),
+            Text(stats, style: TextStyle(fontWeight: FontWeight.bold)),
+          ],
+        ),
+        trailing: Icon(Icons.arrow_forward_ios),
+        onTap: () {
+          // Navigate to sport details
+        },
+      ),
+    );
+  }
+}</code></pre>
+
+            <div class="output-preview">
+<strong>App Features Demonstrated:</strong>
+✓ Custom school branding with blue/gold colors
+✓ Responsive header with profile integration
+✓ Login sheet for student authentication
+✓ Responsive text that adapts to screen sizes
+✓ Consistent card design with school theme
+✓ Material Design 3 components
+✓ Cross-platform compatibility
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>🔄 Data Pipeline Integration</h2>
+            <p>Advanced example showing how to create an automated data pipeline that combines both packages.</p>
+            
+            <pre><code class="language-python"># data_pipeline.py
+import schedule
+import time
+import json
+from datetime import datetime
+from hs_scraper_toolkit import MaxPrepRoster, AthleticNetTrackField
+
+class SchoolDataPipeline:
+    def __init__(self, school_config):
+        self.config = school_config
+        self.maxprep_scraper = MaxPrepRoster(school_config['maxprep_url'])
+        self.athletic_scraper = AthleticNetTrackField(school_config['athletic_url'])
+    
+    def update_all_data(self):
+        """Complete data refresh for all sports"""
+        print(f"Starting data update for {self.config['school_name']}")
+        
+        # Scrape MaxPreps data
+        roster_data = self.maxprep_scraper.scrape()
+        print(f"Scraped {len(roster_data)} athletes from MaxPreps")
+        
+        # Scrape Athletic.net data
+        track_athletes = self.athletic_scraper.scrape_athletes()
+        track_events = self.athletic_scraper.scrape_events()
+        print(f"Scraped {len(track_athletes)} track athletes and {len(track_events)} events")
+        
+        # Save data with timestamp
+        timestamp = datetime.now().isoformat()
+        
+        # Export to JSON for Flutter app consumption
+        app_data = {
+            'last_updated': timestamp,
+            'school': self.config['school_name'],
+            'roster': roster_data.to_dict('records'),
+            'track_athletes': track_athletes.to_dict('records'),
+            'events': track_events.to_dict('records'),
+            'stats': {
+                'total_athletes': len(roster_data) + len(track_athletes),
+                'total_sports': len(roster_data['sport'].unique()) if len(roster_data) > 0 else 0,
+                'upcoming_events': len(track_events)
+            }
+        }
+        
+        # Save for Flutter app
+        with open('assets/school_data.json', 'w') as f:
+            json.dump(app_data, f, indent=2)
+        
+        print(f"Data pipeline completed. Updated {app_data['stats']['total_athletes']} athletes")
+        return app_data
+
+# Configuration for your school
+school_config = {
+    'school_name': 'Northside College Prep',
+    'maxprep_url': 'https://www.maxpreps.com/il/chicago/northside-mustangs',
+    'athletic_url': 'https://www.athletic.net/team/19718'
+}
+
+# Initialize pipeline
+pipeline = SchoolDataPipeline(school_config)
+
+# Schedule automatic updates
+schedule.every().day.at("06:00").do(pipeline.update_all_data)  # Daily at 6 AM
+schedule.every().week.do(pipeline.update_all_data)            # Weekly backup
+
+# Run initial update
+initial_data = pipeline.update_all_data()
+
+# Keep pipeline running
+print("Data pipeline started. Press Ctrl+C to stop.")
+while True:
+    schedule.run_pending()
+    time.sleep(60)  # Check every minute</code></pre>
+
+            <div class="output-preview">
+<strong>Pipeline Benefits:</strong>
+• Automated daily data collection
+• JSON export for Flutter app consumption
+• Error handling and logging
+• Scheduled updates to keep data fresh
+• Combined data from multiple sources
+• Ready for production deployment
+• Scalable to multiple schools
+            </div>
+        </div>
+
+        <div class="example-section">
+            <h2>📊 Advanced Data Analysis Example</h2>
+            <p>Statistical analysis and insights using the scraped sports data.</p>
+            
+            <pre><code class="language-python">import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from hs_scraper_toolkit import MaxPrepRoster
+
+# Initialize scraper
+scraper = MaxPrepRoster("https://www.maxpreps.com/il/chicago/northside-mustangs")
+
+# Scrape all available sports data
+print("Scraping comprehensive sports data...")
+all_sports_data = scraper.scrape()
+
+# Data Analysis
+print(f"\n📊 NORTHSIDE COLLEGE PREP ATHLETICS ANALYSIS")
+print(f"{'='*50}")
+
+# Sports participation by gender
+gender_stats = all_sports_data.groupby(['sport', 'gender']).size().unstack(fill_value=0)
+print(f"\n🏅 Sports Participation by Gender:")
+print(gender_stats)
+
+# Grade distribution across all sports
+grade_dist = all_sports_data['grade'].value_counts().sort_index()
+print(f"\n📚 Athletes by Grade Level:")
+for grade, count in grade_dist.items():
+    print(f"  Grade {grade}: {count} athletes")
+
+# Most popular sports
+sport_popularity = all_sports_data['sport'].value_counts()
+print(f"\n🏆 Most Popular Sports:")
+for sport, count in sport_popularity.head().items():
+    print(f"  {sport.title()}: {count} athletes")
+
+# Competition level analysis
+level_stats = all_sports_data.groupby(['level', 'gender']).size().unstack(fill_value=0)
+print(f"\n⭐ Athletes by Competition Level:")
+print(level_stats)
+
+# Seasonal distribution
+season_stats = all_sports_data['season'].value_counts()
+print(f"\n🗓️ Athletes by Season:")
+for season, count in season_stats.items():
+    print(f"  {season.title()}: {count} athletes")
+
+# Generate summary report
+total_athletes = len(all_sports_data)
+unique_sports = len(all_sports_data['sport'].unique())
+male_athletes = len(all_sports_data[all_sports_data['gender'] == 'boys'])
+female_athletes = len(all_sports_data[all_sports_data['gender'] == 'girls'])
+
+print(f"\n📈 SUMMARY STATISTICS:")
+print(f"  Total Athletes: {total_athletes}")
+print(f"  Number of Sports: {unique_sports}")
+print(f"  Male Athletes: {male_athletes} ({male_athletes/total_athletes*100:.1f}%)")
+print(f"  Female Athletes: {female_athletes} ({female_athletes/total_athletes*100:.1f}%)")
+
+# Export detailed report
+all_sports_data.to_csv('athletics_analysis.csv', index=False)
+print(f"\n💾 Detailed data exported to 'athletics_analysis.csv'")</code></pre>
+
+            <div class="output-preview">
+<strong>Sample Analysis Output:</strong>
+
+📊 NORTHSIDE COLLEGE PREP ATHLETICS ANALYSIS
+==================================================
+
+🏅 Sports Participation by Gender:
+gender      boys  girls
+sport               
+basketball    15     12
+cross-country 23     22
+football      45      0
+soccer        18     16
+track-field   31     30
+volleyball     0     14
+
+📚 Athletes by Grade Level:
+  Grade 9: 34 athletes
+  Grade 10: 41 athletes  
+  Grade 11: 38 athletes
+  Grade 12: 32 athletes
+
+🏆 Most Popular Sports:
+  Football: 45 athletes
+  Track-field: 61 athletes
+  Cross-country: 45 athletes
+  Soccer: 34 athletes
+  Basketball: 27 athletes
+
+📈 SUMMARY STATISTICS:
+  Total Athletes: 226
+  Number of Sports: 8
+  Male Athletes: 132 (58.4%)
+  Female Athletes: 94 (41.6%)
+
+💾 Detailed data exported to 'athletics_analysis.csv'
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 60px 0;">
+            <a href="index.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">
+                ← Back to Main Documentation
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

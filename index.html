@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCP Stampede - High School Sports Toolkit | Python & Flutter</title>
+    <meta name="description" content="Complete toolkit for high school sports applications. Python scraping tools for MaxPreps & Athletic.net data, plus Flutter UI components for building beautiful athletics apps.">
+    <meta name="keywords" content="high school sports, python scraping, flutter ui, maxpreps, athletic.net, school athletics, sports data, mobile apps">
+    <meta name="author" content="NCP Stampede">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ncp-stampede.github.io/">
+    <meta property="og:title" content="NCP Stampede - High School Sports Toolkit">
+    <meta property="og:description" content="Complete toolkit for high school sports applications. Python scraping tools and Flutter UI components.">
+    <meta property="og:image" content="https://ncp-stampede.github.io/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ncp-stampede.github.io/">
+    <meta property="twitter:title" content="NCP Stampede - High School Sports Toolkit">
+    <meta property="twitter:description" content="Complete toolkit for high school sports applications. Python scraping tools and Flutter UI components.">
+    <meta property="twitter:image" content="https://ncp-stampede.github.io/assets/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏈</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏈</text></svg>">
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "NCP Stampede Toolkit",
+        "description": "Complete toolkit for high school sports applications with Python scraping tools and Flutter UI components",
+        "url": "https://ncp-stampede.github.io",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": ["Python", "Dart"],
+        "author": {
+            "@type": "Organization",
+            "name": "NCP Stampede"
+        },
+        "codeRepository": "https://github.com/NCP-Stampede"
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-icon">🏈</span>
+                NCP Stampede
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#overview" class="nav-link">Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#hs-toolkit" class="nav-link">HS Toolkit</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#frontend-package" class="nav-link">Frontend Package</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#getting-started" class="nav-link">Get Started</a>
+                </li>
+                <li class="nav-item">
+                    <a href="examples.html" class="nav-link">Examples</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/NCP-Stampede" class="nav-link" target="_blank">GitHub</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Complete High School Sports Data Toolkit</h1>
+                    <p class="hero-subtitle">
+                        Powerful Python scraping tools and Flutter UI components for building 
+                        comprehensive high school athletics applications
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Core Packages</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Data Sources</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">MIT</span>
+                            <span class="stat-label">Licensed</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#getting-started" class="btn btn-primary">Get Started</a>
+                        <a href="https://github.com/NCP-Stampede" class="btn btn-secondary" target="_blank">
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section id="overview" class="section">
+            <div class="container">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon">🔧</div>
+                        <h3>HS Scraper Toolkit</h3>
+                        <p>Python package for scraping athletic data from MaxPreps and Athletic.net. Extract roster information, schedules, and athlete statistics with ease.</p>
+                        <a href="#hs-toolkit" class="card-link">Learn More →</a>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">🎨</div>
+                        <h3>Frontend Package</h3>
+                        <p>Flutter UI components and theme system for building beautiful, responsive school athletics apps with customizable branding.</p>
+                        <a href="#frontend-package" class="card-link">Learn More →</a>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon">🏗️</div>
+                        <h3>Complete Ecosystem</h3>
+                        <p>Built to work together seamlessly, providing everything needed to create professional high school sports applications.</p>
+                        <a href="#getting-started" class="card-link">Get Started →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HS Toolkit Section -->
+        <section id="hs-toolkit" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">HS Scraper Toolkit</h2>
+                    <p class="section-subtitle">
+                        A comprehensive Python toolkit for scraping high school sports data from various athletic websites
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>MaxPreps Integration</h3>
+                        <p>Scrape detailed roster information including player names, numbers, positions, grades, and more from MaxPreps team pages.</p>
+                        <ul class="feature-list">
+                            <li>Complete roster data extraction</li>
+                            <li>Multiple sports support</li>
+                            <li>Season and level filtering</li>
+                            <li>Grade and position information</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Athletic.net Support</h3>
+                        <p>Extract track & field and cross country data including athlete rosters and comprehensive event schedules.</p>
+                        <ul class="feature-list">
+                            <li>Athlete roster scraping</li>
+                            <li>Event schedule extraction</li>
+                            <li>Meet location data</li>
+                            <li>Cross country & track support</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Easy Integration</h3>
+                        <p>Simple Python classes with pandas DataFrame outputs make it easy to integrate into any data pipeline.</p>
+                        <ul class="feature-list">
+                            <li>Pandas DataFrame output</li>
+                            <li>Flexible filtering options</li>
+                            <li>Production-ready code</li>
+                            <li>PyPI distribution</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Quick Start Example</h3>
+                    <pre><code class="language-python"># Install the package
+pip install hs-scraper-toolkit
+
+# Import and use
+from hs_scraper_toolkit import MaxPrepRoster, AthleticNetTrackField
+
+# MaxPreps roster scraping
+scraper = MaxPrepRoster("https://www.maxpreps.com/il/chicago/northside-mustangs")
+roster_data = scraper.scrape()
+
+# Athletic.net data scraping
+athletic_scraper = AthleticNetTrackField("https://www.athletic.net/team/19718")
+athletes = athletic_scraper.scrape_athletes(['cross-country'])
+events = athletic_scraper.scrape_events(['cross-country'], [2024])
+
+print(f"Found {len(roster_data)} athletes from MaxPreps")
+print(f"Found {len(athletes)} athletes and {len(events)} events from Athletic.net")</code></pre>
+                </div>
+
+                <div class="api-reference">
+                    <h3>API Reference</h3>
+                    <p style="text-align: center; margin-bottom: 30px;">
+                        <a href="api-reference.html" class="btn btn-primary" target="_blank">
+                            View Complete API Reference
+                        </a>
+                    </p>
+                    <div class="api-grid">
+                        <div class="api-card">
+                            <h4>MaxPrepRoster</h4>
+                            <p><strong>Constructor:</strong> <code>MaxPrepRoster(url)</code></p>
+                            <p><strong>Main Method:</strong> <code>scrape(sports=None, genders=None, seasons=None, levels=None)</code></p>
+                            <p><strong>Returns:</strong> pandas DataFrame with athlete information</p>
+                            <div class="api-columns">
+                                <strong>Columns:</strong>
+                                <ul>
+                                    <li>name - Athlete name</li>
+                                    <li>number - Jersey number</li>
+                                    <li>sport - Sport type</li>
+                                    <li>season - Season (fall/winter/spring)</li>
+                                    <li>level - Competition level</li>
+                                    <li>gender - Gender (boys/girls)</li>
+                                    <li>grade - Grade level</li>
+                                    <li>position - Player position</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="api-card">
+                            <h4>AthleticNetTrackField</h4>
+                            <p><strong>Constructor:</strong> <code>AthleticNetTrackField(url)</code></p>
+                            <p><strong>Methods:</strong></p>
+                            <ul>
+                                <li><code>scrape_athletes(sports=['cross-country', 'track-and-field-outdoor', 'track-and-field-indoor'])</code></li>
+                                <li><code>scrape_events(sports=['cross-country'], years=[2024, 2025])</code></li>
+                            </ul>
+                            <p><strong>Requirements:</strong> ChromeDriver for Selenium WebDriver</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frontend Package Section -->
+        <section id="frontend-package" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Frontend Package</h2>
+                    <p class="section-subtitle">
+                        Flutter UI components and theme system for building beautiful, responsive school athletics apps
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Reusable Widgets</h3>
+                        <p>Collection of common UI elements like headers, sheets, and cards, ready to use in any Flutter app.</p>
+                        <ul class="feature-list">
+                            <li>SharedHeader with customizable titles</li>
+                            <li>ArticleDetailSheet for content display</li>
+                            <li>LoginSheet with authentication flow</li>
+                            <li>WebViewSheet for embedded content</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Customizable Theme</h3>
+                        <p>Easily configure colors, fonts, and styles to match your school's brand identity.</p>
+                        <ul class="feature-list">
+                            <li>School brand color customization</li>
+                            <li>Responsive design constants</li>
+                            <li>iOS-style animations</li>
+                            <li>Consistent shadow system</li>
+                        </ul>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Responsive Design</h3>
+                        <p>Optimized for different screen sizes with special attention to narrow screens like Samsung Galaxy S9.</p>
+                        <ul class="feature-list">
+                            <li>Adaptive text sizing</li>
+                            <li>Screen-aware layouts</li>
+                            <li>TextHelper utilities</li>
+                            <li>Cross-device compatibility</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h3>Installation & Usage</h3>
+                    <pre><code class="language-yaml"># Add to pubspec.yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  frontend_package:
+    git:
+      url: https://github.com/NCP-Stampede/frontend-package.git
+      ref: main</code></pre>
+
+                    <pre><code class="language-dart">// Basic widget usage
+import 'package:flutter/material.dart';
+import 'package:frontend_package/widgets/shared_header.dart';
+
+class MyScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          SharedHeader(title: 'My Awesome Screen'),
+          // ... rest of your screen
+        ],
+      ),
+    );
+  }
+}</code></pre>
+
+                    <pre><code class="language-dart">// Custom theme application
+import 'package:frontend_package/core/theme/app_theme.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'My School App',
+      theme: AppTheme.buildTheme(
+        primaryColor: Color(0xFFB71C1C),    // Your school colors
+        secondaryColor: Color(0xFFFFEB3B),
+        backgroundColor: Color(0xFFF5F5F5),
+      ),
+      home: YourHomePage(),
+    );
+  }
+}</code></pre>
+                </div>
+
+                <div class="component-showcase">
+                    <h3>Available Components</h3>
+                    <div class="components-grid">
+                        <div class="component-card">
+                            <h4>SharedHeader</h4>
+                            <p>Customizable header with title and optional trailing action</p>
+                            <code>SharedHeader(title: 'Page Title', onTrailingTap: () {})</code>
+                        </div>
+                        <div class="component-card">
+                            <h4>ArticleDetailSheet</h4>
+                            <p>Draggable sheet for displaying article content with markdown link support</p>
+                            <code>ArticleDetailSheet(article: myArticle)</code>
+                        </div>
+                        <div class="component-card">
+                            <h4>LoginSheet</h4>
+                            <p>Login form with email/password fields and custom styling</p>
+                            <code>LoginSheet(onLogin: () {})</code>
+                        </div>
+                        <div class="component-card">
+                            <h4>WebViewSheet</h4>
+                            <p>Embedded web view with external browser option</p>
+                            <code>WebViewSheet(url: 'https://example.com')</code>
+                        </div>
+                        <div class="component-card">
+                            <h4>TextHelper</h4>
+                            <p>Responsive text utilities for different screen sizes</p>
+                            <code>TextHelper.responsiveText('Text', context: context)</code>
+                        </div>
+                        <div class="component-card">
+                            <h4>DesignConstants</h4>
+                            <p>Consistent spacing, radius, and shadow constants</p>
+                            <code>DesignConstants.get24Radius(context)</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getting Started Section -->
+        <section id="getting-started" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Getting Started</h2>
+                    <p class="section-subtitle">
+                        Get up and running with the NCP Stampede toolkit in minutes
+                    </p>
+                </div>
+
+                <div class="getting-started-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Install Dependencies</h3>
+                        <p>Set up your Python and Flutter environments with the necessary packages.</p>
+                        <div class="step-code">
+                            <pre><code class="language-bash"># Python toolkit
+pip install hs-scraper-toolkit
+
+# Flutter dependencies (add to pubspec.yaml)
+# See frontend package section for details</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Data Scraping</h3>
+                        <p>Start collecting athletic data from MaxPreps and Athletic.net.</p>
+                        <div class="step-code">
+                            <pre><code class="language-python">from hs_scraper_toolkit import MaxPrepRoster
+
+# Initialize with your school's MaxPreps URL
+scraper = MaxPrepRoster("https://www.maxpreps.com/il/chicago/northside-mustangs")
+
+# Scrape all available data
+data = scraper.scrape()
+
+# Filter specific sports
+basketball_data = scraper.scrape(
+    sports=['basketball'],
+    genders=['boys'],
+    seasons=['winter'],
+    levels=['varsity']
+)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Build Your App</h3>
+                        <p>Create beautiful Flutter interfaces using the frontend package components.</p>
+                        <div class="step-code">
+                            <pre><code class="language-dart">import 'package:frontend_package/widgets/shared_header.dart';
+import 'package:frontend_package/core/theme/app_theme.dart';
+
+class AthleticsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          SharedHeader(title: 'Athletics'),
+          // Your app content here
+        ],
+      ),
+    );
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="requirements-section">
+                    <h3>System Requirements</h3>
+                    <div class="requirements-grid">
+                        <div class="requirement-card">
+                            <h4>Python Toolkit</h4>
+                            <ul>
+                                <li>Python 3.7 or higher</li>
+                                <li>ChromeDriver (for Athletic.net)</li>
+                                <li>Internet connection</li>
+                                <li>Dependencies: beautifulsoup4, requests, pandas, selenium</li>
+                            </ul>
+                        </div>
+                        <div class="requirement-card">
+                            <h4>Flutter Package</h4>
+                            <ul>
+                                <li>Flutter 3.0 or higher</li>
+                                <li>Dart 2.17 or higher</li>
+                                <li>Internet connection for git dependencies</li>
+                                <li>Platform-specific requirements for target devices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resources-section">
+                    <h3>Additional Resources</h3>
+                    <div class="resources-grid">
+                        <a href="https://github.com/NCP-Stampede/hs-app-toolkit" class="resource-card" target="_blank">
+                            <h4>🔧 HS Toolkit Repository</h4>
+                            <p>View source code, issues, and contribute to the Python scraping toolkit</p>
+                        </a>
+                        <a href="https://github.com/NCP-Stampede/frontend-package" class="resource-card" target="_blank">
+                            <h4>🎨 Frontend Package Repository</h4>
+                            <p>Explore Flutter components and contribute to the UI library</p>
+                        </a>
+                        <a href="https://pypi.org/project/hs-scraper-toolkit/" class="resource-card" target="_blank">
+                            <h4>📦 PyPI Package</h4>
+                            <p>Official Python package distribution on PyPI</p>
+                        </a>
+                        <a href="examples.html" class="resource-card">
+                            <h4>📚 Complete Examples</h4>
+                            <p>Detailed code examples and use cases for both packages</p>
+                        </a>
+                        <a href="api-reference.html" class="resource-card">
+                            <h4>📖 API Reference</h4>
+                            <p>Complete API documentation for all classes and methods</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="disclaimer" class="requirements-section">
+                    <h3>⚠️ Important Disclaimer</h3>
+                    <div class="requirement-card" style="border-left: 4px solid #ff6b35; background: #fff8f6;">
+                        <p style="margin-bottom: 15px;"><strong>Ethical Use & Terms of Service</strong></p>
+                        <ul>
+                            <li>This toolkit is designed for <strong>educational and research purposes</strong></li>
+                            <li>Please <strong>respect the terms of service</strong> of websites you scrape (MaxPreps, Athletic.net)</li>
+                            <li>Implement appropriate <strong>rate limiting</strong> and ethical scraping practices</li>
+                            <li>Use scraped data responsibly and in compliance with applicable laws</li>
+                            <li>Consider contacting website owners for permission for large-scale scraping</li>
+                            <li>The toolkit is provided "as-is" without warranty of any kind</li>
+                        </ul>
+                        <p style="margin-top: 15px; font-style: italic; color: #666;">
+                            Users are responsible for ensuring their use complies with all applicable laws and website terms of service.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>NCP Stampede</h3>
+                        <p>Complete toolkit for high school sports applications</p>
+                        <div class="footer-links">
+                            <a href="https://github.com/NCP-Stampede" target="_blank">GitHub</a>
+                            <a href="https://pypi.org/project/hs-scraper-toolkit/" target="_blank">PyPI</a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Documentation</h4>
+                        <ul>
+                            <li><a href="#hs-toolkit">HS Toolkit</a></li>
+                            <li><a href="#frontend-package">Frontend Package</a></li>
+                            <li><a href="#getting-started">Getting Started</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="https://github.com/NCP-Stampede/hs-app-toolkit/issues" target="_blank">Report Issues</a></li>
+                            <li><a href="https://github.com/NCP-Stampede/hs-app-toolkit/discussions" target="_blank">Discussions</a></li>
+                            <li><a href="https://github.com/NCP-Stampede/hs-app-toolkit#contributing" target="_blank">Contributing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="https://github.com/NCP-Stampede/hs-app-toolkit/blob/main/LICENSE" target="_blank">MIT License</a></li>
+                            <li><a href="#disclaimer">Disclaimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 NCP Stampede. Licensed under MIT License.</p>
+                    <p>Built with ❤️ for high school athletics</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
