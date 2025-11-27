@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - NCP Stampede</title>
+    <meta name="description" content="Contact NCP Stampede - Get in touch with us via email or Instagram.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏈</text></svg>">
+    <style>
+        body { padding-top: 70px; }
+        .contact-section {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            text-align: center;
+        }
+        .contact-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .contact-icon {
+            font-size: 2rem;
+        }
+        .contact-info {
+            text-align: left;
+        }
+        .contact-label {
+            font-size: 0.9rem;
+            color: #6a6a6a;
+            margin-bottom: 5px;
+        }
+        .contact-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .contact-value a {
+            color: #007AFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-value a:hover {
+            color: #0056CC;
+        }
+        .back-nav {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            z-index: 100;
+        }
+        .back-nav a {
+            background: #007AFF;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .back-nav a:hover {
+            background: #0056CC;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 480px) {
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="container" style="max-width: 600px; margin-top: 40px;">
+        <h1 style="text-align: center; color: #007AFF; margin-bottom: 40px;">
+            📬 Contact Us
+        </h1>
+
+        <div class="contact-section">
+            <h2>Get in Touch</h2>
+            
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <div class="contact-info">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="mailto:stampede.ncp@gmail.com">stampede.ncp@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <span class="contact-icon">📸</span>
+                <div class="contact-info">
+                    <div class="contact-label">Instagram</div>
+                    <div class="contact-value">
+                        <a href="https://instagram.com/ncpstampede" target="_blank" rel="noopener noreferrer">@ncpstampede</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
